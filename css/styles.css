@@ -1,261 +1,466 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-body {
-
-    background-color: #0e0d0d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-
+:root {
+    --bg-dark: #05010a;
+    --bg-accent: #120526;
+    --card-bg: rgba(25, 12, 45, 0.6);
+    --card-border: rgba(167, 139, 250, 0.1);
+    --primary: #a78bfa;
+    --primary-glow: rgba(167, 139, 250, 0.4);
+    --secondary: #c084fc;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --gradient-btn: linear-gradient(90deg, #a78bfa 0%, #c084fc 100%);
 }
 
-.img-treino img{
-
-    width: 80%;
-    
-}
-
-.img-treino {
-
-    margin-left: 200px;
-
-    margin-top: 80px;
-}
-
-*{
-    font-family: 'Lato', sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-#container{
-
+body {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-accent) 100%);
+    color: var(--text-main);
+    min-height: 10vh;
     display: flex;
-    background-color: rgb(27, 26, 26);
-    margin-right: 340px;
-    width: 580px;
-    height: 530px;
-    margin-top: 40px;
-    border-radius: 20px;
-    
-
-}
-
-#title {
-
-    padding-left: 40px;
-    padding-top: 15px;
-    color: white;
-    font-size: 32px;
-    font-weight: 700;
-    border-bottom: 2px solid #007BFF;
-    border-left: 2px;
-}
-
-#peso-label {
-
-    padding-left: 30px;
-    
-    color: white;
-    font-size: 17px;
-
-}
-
-#altura-label {
-
-    padding-left: 30px;
-    color: white;
-    font-size: 17px;
-
-
-}
-
-.input-field-peso {
-
-
-    display: flex;
-    padding-left: 1px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: rgb(87, 81, 81);
-    margin-left: 30px;
-    margin-top: 18px;
-    height: 40px;
-    width: 280px;
-    padding-top: 20px;
-    padding-bottom: 8px;
-    padding: 0.4rem;
-    border-radius: 8px;
-
-
-
-
-
+    padding: 2rem;
 }
 
-.input-field-peso span {
-
-    color: white;
+.app-container {
+    max-width: 1200px;
+    width: 100%;
+    height: 100px;
 }
 
-.input-field-peso i {
-
-    color: white;
+.main-header {
+    margin-bottom: 2rem;
 }
 
-.input-field-peso input {
-
-    background-color: transparent;
-    border: none;
-    width: 190px;
-    height: 20px;
-    color: white;
-    font-size: 1.3rem;
-    
-
+.main-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
 }
 
-.input-field-altura input {
-
-    background-color: transparent;
-    border: none;
-    width: 190px;
-    font-size: 1.3rem;
-    color: white;
-
-
+.main-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
 }
 
-
-.input-field-altura span {
-
-    color: white;
-}
-
-.input-field-altura i {
-
-    color: white;
-}
-
-
-.input-field-altura {
-
-    display: flex;
-    padding-left: 0px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(87, 81, 81);
-    border-radius: 8px;
-    margin-left: 30px;
-    margin-top: 18px;
-    height: 40px;
-    width: 280px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding: 0.3rem;
-
-}
-
-#calcular {
-    margin-left: 30px;
-    margin-top: 0px;
-
-    height: 40px;
-    background-color: rgb(69, 69, 233);
-
-    font-size: 20px;
-    color: white;
-    border: none;
-
-    border-radius: 12px;
-}
-
-#resultado {
-
-    
-    padding-left: 60px;
-    padding-top: 15px;
-}
-
-#more-info{
-    
-    margin-left: 60px;
-    margin-top: 15px;
-}
-
-#form{
-
-    display: flex;
-    flex-direction: column;
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
     gap: 1.8rem;
 }
 
-#bmi{
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
-    margin-top: 20px;
+.calculator-main-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    display: flex;
+    overflow: hidden;
+}
 
-    padding-right: 40px;
+.calculator-card {
+    flex: 1;
+    padding: 1.5rem;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+}
+
+.result-card {
+    width: 350px;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-left: 1px solid var(--card-border);
+    backdrop-filter: none;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+}
+
+.result-card.hidden {
+    display: flex;
+    opacity: 0.5;
+}
+
+.unit-toggle {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border-radius: 12px;
+    width: fit-content;
+    margin-bottom: 2rem;
+}
+
+.unit-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.unit-toggle button.active {
+    background: var(--gradient-btn);
     color: white;
-    
+    box-shadow: 0 4px 12px rgba(167, 139, 250, 0.3);
 }
 
-#more_info {
-    margin-top: 20px;
-    margin-left: 60px;
+#form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    background: #000;
+    border: 2px solid #1a1523;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
     color: white;
-
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
 }
 
-#more_info a{
-    
-    color: rgb(5, 63, 255);
-
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary);
 }
 
-#bmi span:last-child {
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 
-    font-size: 0.875rem;
+.input-wrapper input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 1.5rem;
+    color: #ffffff;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+.btn-calculate {
+    margin-top: 1rem;
+    background: var(--gradient-btn);
+    border: none;
+    padding: 1.2rem;
+    border-radius: 12px;
     color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#description {
-    width: 15.5rem;
-    color: white;
-    padding-left: 50px;
-    padding-top: 14px;
+.btn-calculate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--primary-glow);
 }
 
-#bmi #value {
-
-    margin-left: 16px;
-
-    font-size: 30px;
+.result-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    transition: opacity 0.5s ease;
 }
 
-@media screen and (max-width: 1024px){
+.result-card.hidden {
+    display: none;
+}
 
-    .img-treino {
-        display: none;
+.result-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.result-content h2 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+}
+
+.badge {
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--primary);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.progress-bar-container {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress, 0%);
+    background: var(--gradient-btn);
+    transition: width 0.5s ease;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.health-tips-section {
+    position: relative;
+    bottom: 268px;
+}
+
+.health-tips-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.tip-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease;
+}
+
+.tip-icon {
+    background: rgba(167, 139, 250, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.tip-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    height: 59.2%;
+    border: 1px solid var(--card-border);
+}
+
+.profile-image-container {
+    height: 605px;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 140px;
+}
+
+.quote-card {
+    padding: 2rem;
+    background: rgba(10, 5, 20, 0.6);
+}
+
+.quote-card p {
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
     }
 
-    #container{
-
-        margin-left: 340px;
-        display: block;
-        width: 480px;
-        padding-right: 20px;
+    .right-column {
+        order: -1;
     }
 
-    #calculadora {
-
-        width: 480px;
+    .profile-card {
+        height: auto;
     }
 
-   
-    
+    .profile-image-container {
+        height: 450px;
+    }
+
+    .profile-image-container img {
+        height: 100%;
+        width: auto;
+        margin-bottom: 0;
+    }
 }
 
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
 
+    .main-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .calculator-main-container {
+        flex-direction: column;
+    }
+
+    .calculator-card {
+        padding: 2rem;
+    }
+
+    .result-card {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--card-border);
+        padding: 2rem;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .profile-image-container {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    .main-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .calculator-card,
+    .result-card {
+        padding: 1.5rem;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-content h2 {
+        font-size: 3.5rem;
+    }
+
+    .unit-toggle {
+        width: 100%;
+    }
+
+    .unit-toggle button {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .input-wrapper input {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+}

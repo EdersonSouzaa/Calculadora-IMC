@@ -1,85 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Calculadora imc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Calculadora IMC Premium</title>
 </head>
+
 <body>
+    <div class="app-container">
+        <header class="main-header">
+            <h1>Calculadora IMC</h1>
+            <p>Monitore sua saúde com precisão premium.</p>
+        </header>
 
+        <main class="content-grid">
+            <div class="left-column">
+                <div class="calculator-main-container">
+                    <section class="calculator-card">
+                        <div class="unit-toggle">
+                            <button class="active" id="btn-metric">Métrico</button>
+                            <button id="btn-imperial">Imperial</button>
+                        </div>
 
-    
-    <div class="img-treino">
-        <img src="./images/undraw_personal-trainer_bqkg.svg" alt="treino">
-    </div>
+                        <form id="form">
+                            <div class="input-group">
+                                <label id="peso-label">PESO (KG)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="peso" placeholder="00.0" step="0.1" required>
+                                    <i class="fa-solid fa-weight-hanging"></i>
+                                </div>
+                            </div>
 
-    <main id="container">
+                            <div class="input-group">
+                                <label id="altura-label">ALTURA (CM)</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="altura" placeholder="000" required>
+                                    <i class="fa-solid fa-ruler"></i>
+                                </div>
+                            </div>
 
-        <section id="Calculadora">
+                            <button type="submit" id="calcular" class="btn-calculate">
+                                Calcular Agora <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </section>
 
-            <form action="" id="form">
+                    <section class="result-card" id="infos">
+                        <div class="result-content">
+                            <span class="result-label">SEU IMC É</span>
+                            <h2 id="value">--.-</h2>
+                            <span id="description" class="badge">Aguardando Dados</span>
 
-                <h1 id="title">Calculadora - IMC</h1>
-
-                <div class="input-box">
-                    <label for="Peso" id="peso-label">
-                        Peso em Kg
-                    </label>
-                    <div class="input-field-peso">
-                        <i class="fa-solid fa-weight-hanging"></i>
-                        <input type="number" id="peso" required>
-                        <span>
-                            Kg
-                        </span>
-                    </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="progress-bar"></div>
+                                <div class="progress-labels">
+                                    <span>BAIXO</span>
+                                    <span>NORMAL</span>
+                                    <span>SOBREPESO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
-                
-                <div class="input-box">
-                    <label for="Altura" id="altura-label">
-                        Altura em Cm
-                    </label>
-                    <div class="input-field-altura">
-                        <i class="fa-solid fa-ruler"></i>
-                        <input type="number"id="altura"step="0.01" required>
-                        <span>
-                            Cm
-                        </span>
+            </div>
+
+            <div class="right-column">
+                <aside class="profile-card">
+                    <div class="profile-image-container">
+                        <img src="images/treino.png" alt="Fitness Illustration">
                     </div>
+                    <div class="quote-card">
+                        <p>"Seu corpo é seu templo. Acompanhe sua evolução diariamente com nossas ferramentas de
+                            precisão."</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <section class="health-tips-section">
+            <h3><i class="fa-solid fa-lightbulb"></i> Dicas de Saúde Personalizadas</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <h4>Hidratação</h4>
+                    <p>Mantenha o consumo de 2.5L de água por dia para otimizar seu metabolismo basal.</p>
                 </div>
-
-                <button id="calcular">
-                    Calcular
-                </button>
-            </form>
-
-            <div id="infos" class="hidden">
-
-                <div id="result">
-
-                    <div id="bmi">
-                        <span id="resultado">Seu IMC:   </span>
-                        <span id="value"></span>
-                    </div>
-                    <div id="description">
-                        <span></span>
-                    </div>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fa-solid fa-moon"></i></div>
+                    <h4>Sono Reparador</h4>
+                    <p>Dormir 7-8h auxilia na regulação hormonal e facilita o controle do peso.</p>
                 </div>
-
-                <div id="more_info">
-                    <a href="https://mundoeducacao.uol.com.br/saude-bem-estar/imc.htm">
-                        Mais informações sobre o IMC
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                    <h4>Atividade Física</h4>
+                    <p>Exercícios regulares aumentam o gasto calórico e melhoram a composição corporal.</p>
                 </div>
             </div>
         </section>
-
-    </main>
+    </div>
 
     <script src="js/script.js"></script>
-    
 </body>
+
 </html>
